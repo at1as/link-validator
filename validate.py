@@ -12,10 +12,8 @@ broken_link_list = []
 visited_links = {}
 default_url = ""
 
-## Configurable
 # Add full URL beginning with "http://"
 url = "http://www.w3.org/TR/html401/struct/links.html"
-
 
 #Current Limitations:
 #Will scan a page multiple times if different anchors are provided. 
@@ -33,16 +31,15 @@ def get_broken_links(address, depth=1, max_depth=2):
 	html_object = BeautifulSoup(r.text)
 
 	for link in html_object.find_all('a'):
-		
-		# Extract href link from <a> tag
 		print "Origin: ", address
+
+		# Extract href link from <a> tag
 		try:
 			inner_link = link.get('href')
 			print 'inner_link', inner_link
 			print 'base_address', base_address
 		except: pass
 		
-
 		if not inner_link is None:
 			# Link Type. If the inner_link in the href tag isn't a full address, join it to the current address
 			if inner_link and not inner_link.startswith('www') and not inner_link.startswith('http'):
@@ -55,7 +52,6 @@ def get_broken_links(address, depth=1, max_depth=2):
 			# Unable to test multimedia links (for now)
 			elif inner_link and ("mailto:" or "tel:") in inner_link:
 				print 'multimedia address. Skipping.'
-
 			else:
 				try:
 					link_follow = requests.get(inner_link, verify=False, allow_redirects=True)
@@ -86,10 +82,9 @@ def get_broken_links(address, depth=1, max_depth=2):
 							print 'transcended %d / %d levels.' % (depth, max_depth),  colored('Stopping recusion', 'yellow')
 				except: 
 					print inner_link, ': not searchable ' + colored('uncontrolled failure', 'red')
-			print '---'
 		else:
 			print 'Link does not contain an "href" tag ', colored('skipping', 'yellow')
-			print '---'
+		print '---'
 	return broken_link_list
 
 ##Broken Links
