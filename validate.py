@@ -7,10 +7,6 @@ import json
 from bs4 import BeautifulSoup
 from termcolor import colored
 
-# Notes:
-# Will scan a page multiple times if different anchors are provided. 
-# Requests isn't actually validating the anchors, so this is costly.
-
 
 def get_broken_links(address, depth=1, max_depth=2):
 
@@ -33,6 +29,7 @@ def get_broken_links(address, depth=1, max_depth=2):
       pass
       
     if not inner_link is None:
+      
       # Link Type. If the inner_link in the href tag isn't a full address, join it to the current address
       if inner_link and not inner_link.startswith('www') and not inner_link.startswith('http'):
         inner_link = urlparse.urljoin(address, inner_link)
@@ -98,7 +95,7 @@ if __name__ == "__main__":
   # Compile Results
   print '----\nResults:'
   
-  print '\n>> Visited Links'
+  print '\n>> Visited Links:'
   for link, status in sorted(visited_links.items(), key=lambda x: x[1]):
     if status == 200:
       print "%s => %s" %(link, colored(status, 'green'))
@@ -107,9 +104,9 @@ if __name__ == "__main__":
     else:
       print "%s => %s" %(link, colored(status, 'red'))
   
-  print '\n\n>> Broken Links'
+  print '\n\n>> Broken Links:'
   for broken_link in broken_link_list:
     print 'Origin : %s Link : %s => %s' %(broken_link[0], broken_link[1], colored(broken_link[2], 'red'))
   if len(broken_link_list) == 0:
-    print 'None.'
+    print 'None!'
   print '\n'
