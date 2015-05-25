@@ -1,7 +1,7 @@
 link-validator
 ==============
 
-Will recursively validate each link on a specified website, and those of its children.
+Will recursively search and validate the HTTP response code of each link on a specified web page - and those of its children up - to the maximum specified recursion depth.
 
 ## Screenshot
 
@@ -9,10 +9,11 @@ Will recursively validate each link on a specified website, and those of its chi
 
 ## Usage
 
-* `git clone https://github.com/at1as/link-validator.git`
-* Modify the url variable included in validate.py to a link of your choosing, and run the script. Recursion depth defaults to 2, but can be set in the get_broken_links function arguments. Things slow down a lot as this increases, so start low
-* python validate.py
-
+* Download: `git clone https://github.com/at1as/link-validator.git`
+* Run: `python validate.py --url www.example.com --depth 2`
+* See: `python validate.py --help` for details
+ 
 ## Notes
-* Tested on Mac OS 10.10 with Python 2.7
+* Tested and developed on Mac OS 10.10 with Python 2.7.6
+* Recursion defautls to 2. Script will slow down a lot as this is increased
 
