@@ -97,7 +97,7 @@ def get_broken_links(address, max_depth=2, depth=1):
   return
 
 
-if __name__ == "__main__":
+def main():
 
   # For storing results
   # (better to keep lists outside of recursive function to avoid overwriting)
@@ -139,4 +139,7 @@ if __name__ == "__main__":
     print 'None!'
   
   print '\n'
+
+if __name__ == "__main__":
+  main()
 
