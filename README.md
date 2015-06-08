@@ -20,8 +20,10 @@ Older but more stable commits
 * Download: `pip install link_validator`
 * Run: `link_validator --url www.example.com --depth 2`
 * See: `link_validator --help` for details
+More package information [here](https://pypi.python.org/pypi/link_validator/0.2.3)
 
 ## Notes
 * Tested and developed on Mac OS 10.10 with Python 2.7.6
 * Recursion defautls to 2. Script will slow down a lot as this is increased
+
 

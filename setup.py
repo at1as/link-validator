@@ -10,7 +10,7 @@ except:
                 and those of its children up - to the maximum specified recursion depth."
   
 setup(name='link_validator',
-      version='0.2.1',
+      version='0.2.3',
       description='Recursive link validator',
       long_description=long_descr,
       url='http://github.com/at1as/link-validator',
@@ -22,7 +22,8 @@ setup(name='link_validator',
         "console_scripts": ['link_validator = link_validator.link_validator:main']
       },
       install_requires=[
-        'requests',
+        'argparse',
+        'requests>=2.6.0',
         'beautifulsoup4',
         'termcolor'
       ],
