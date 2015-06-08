@@ -11,6 +11,11 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from requests.packages.urllib3.exceptions import InsecurePlatformWarning
 
 
+# For storing results
+# (better to keep lists outside of recursive function to avoid overwriting)
+broken_link_list = []
+visited_links = {}
+
 # Print colored status code corresponding to severity of code
 def print_colored_status(link, status):
   if status == 200:
@@ -97,12 +102,10 @@ def get_broken_links(address, max_depth=2, depth=1):
   return
 
 
-if __name__ == "__main__":
-
-  # For storing results
-  # (better to keep lists outside of recursive function to avoid overwriting)
-  broken_link_list = []
-  visited_links = {}
+def main():
+  
+  global broken_link_list
+  global visited_links
 
   # Force disable SSL certificate verification
   requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -139,4 +142,8 @@ if __name__ == "__main__":
     print 'None!'
   
   print '\n'
+
+
+if __name__ == "__main__":
+  main()
 
