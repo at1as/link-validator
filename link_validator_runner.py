@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 
 
-"""Convenience wrapper for running bootstrap directly from source tree."""
+"""Wrapper for running script directly from root directory."""
 
 
 from link_validator.link_validator import main
 
 if __name__ == '__main__':
   main()
-
